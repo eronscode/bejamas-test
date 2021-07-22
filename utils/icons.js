@@ -1,6 +1,8 @@
-export const CartIcon = () => {
+export const CartIcon = (props) => {
   return (
     <svg
+      style={{ width: "40px" }}
+      {...props}
       width="54"
       height="54"
       viewBox="0 0 54 54"
@@ -23,9 +25,10 @@ export const CartIcon = () => {
   );
 };
 
-export const CloseIcon = () => {
+export const CloseIcon = (props) => {
   return (
     <svg
+      {...props}
       width="22"
       height="22"
       viewBox="0 0 22 22"
@@ -38,9 +41,10 @@ export const CloseIcon = () => {
   );
 };
 
-export const FilterToggleIcon = () => {
+export const FilterToggleIcon = (props) => {
   return (
     <svg
+      {...props}
       width="29"
       height="29"
       viewBox="0 0 29 29"

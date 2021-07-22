@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { HeaderWrapper } from "./styles";
 import Image from "next/image";
+import { CartIcon } from "@utils/icons";
+import CartDropDown from "@components/CartDropDown";
 
 const propTypes = {};
 
@@ -10,6 +12,13 @@ function Header() {
   return (
     <HeaderWrapper>
       <Image src="/images/logo.jpg" alt="logo" width={156} height={26} />
+      <div>
+        <span>
+          <CartIcon />
+          <span className="cart-badge">1</span>
+        </span>
+        <CartDropDown />
+      </div>
     </HeaderWrapper>
   );
 }
