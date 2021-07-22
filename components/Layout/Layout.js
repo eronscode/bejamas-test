@@ -1,5 +1,6 @@
 import Head from "next/head"
 import BaseStyles from '@styles/globalStyles';
+import Header from "@components/Header";
 
 
 function Layout({children}) {
@@ -14,6 +15,7 @@ function Layout({children}) {
             </Head>
 
             <div>
+            <Header/>
                 {children}
             </div>
         </div>
