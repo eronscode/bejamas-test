@@ -1,7 +1,7 @@
 import Head from "next/head"
 import BaseStyles from '@styles/globalStyles';
 import Header from "@components/Header";
-
+import styled from 'styled-components';
 
 function Layout({children}) {
     return (
@@ -14,13 +14,17 @@ function Layout({children}) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <div>
-            <Header/>
+            <LayoutWrapper>
+                <Header />
                 {children}
-            </div>
+            </LayoutWrapper>
         </div>
         </>
     )
 }
+const LayoutWrapper = styled.div`
+  padding: 0 40px;
+`;
+
 
 export default Layout
