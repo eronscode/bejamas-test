@@ -12,7 +12,7 @@ export const HeaderWrapper = styled.div`
   span {
     cursor: pointer;
   }
-  .cart-badge{
+  .cart-badge {
     background: ${color.primary.default};
     color: ${color.secondary.default};
     padding: 5px 6px;

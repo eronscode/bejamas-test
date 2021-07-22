@@ -10,6 +10,9 @@ function CartDropDown() {
         <CloseIcon />
       </div>
       <CartItem />
+      <CartItem />
+      <CartItem />
+      <CartItem />
       <div>
         <Button>Clear Items</Button>
       </div>

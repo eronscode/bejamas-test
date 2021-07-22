@@ -11,16 +11,16 @@ export const CartDropDownWrapper = styled.div`
 
   .close-icon {
     text-align: right;
-    
-    svg{
+    svg {
         width: 18px;
+        ${mixins.clickable}
     }
   }
   padding: 15px 20px;
-  @media screen  and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     width: 300px;
     right: 11px;
-  } 
+  }
 `;
 
 export const CartItemWrapper = styled.div`

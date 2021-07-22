@@ -17,7 +17,7 @@ function Header() {
           <CartIcon />
           <span className="cart-badge">1</span>
         </span>
-        <CartDropDown />
+        {/* <CartDropDown /> */}
       </div>
     </HeaderWrapper>
   );
