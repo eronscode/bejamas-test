@@ -2,7 +2,7 @@ import MultiCheckBox from "@components/CheckBox/MultiCheckBox";
 import SingleCheckBox from "@components/CheckBox/SingleCheckBox";
 import styled from "styled-components";
 
-import { color, font, mixins } from "@styles/styleUtils";
+import { color, font } from "@styles/styleUtils";
 
 function FilterSideBar() {
   return (
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
     ${font.bold}
     line-height: 24px;
     color: ${color.primary.default};
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
   .divider {
