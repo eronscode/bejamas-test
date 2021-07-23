@@ -120,7 +120,6 @@ const Wrapper = styled.div`
   @media screen and (max-width: 966px) {
     .hidden-lg {
       display: block;
-      margin-top: 20px;
     }
     .hidden-sm {
       display: none;
