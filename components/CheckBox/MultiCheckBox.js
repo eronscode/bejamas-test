@@ -12,8 +12,8 @@ const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
 );
 
 function MultiCheckBox() {
-  const [checkedPermissionItems, setCheckedPermissionItems] = useState([]);
-  const [permissions, setPermissions] = useState([
+  const [checkedItems, setCheckedItems] = useState([]);
+  const [items, setItems] = useState([
     {
       id: "1",
       category: "Nice",
@@ -31,11 +31,11 @@ function MultiCheckBox() {
     },
   ]);
 
-  function handlePermissionChange(e) {
+  function handleChange(e) {
     const isChecked = e.target.checked;
     const value = e.target.value;
 
-    setPermissions((prevState) =>
+    setItems((prevState) =>
       prevState.map((product) =>
         product.category === value
           ? { ...product, isChecked: isChecked }
@@ -44,32 +44,30 @@ function MultiCheckBox() {
     );
 
     if (isChecked) {
-      setCheckedPermissionItems((prevState) => [...prevState, value]);
+      setCheckedItems((prevState) => [...prevState, value]);
     } else {
-      const newAddedProducts = checkedPermissionItems.filter(
+      const newCategory = checkedItems.filter(
         (product) => product !== value
       );
-      setCheckedPermissionItems(newAddedProducts);
+      setCheckedItems(newCategory);
     }
   }
 
-  console.log("Check", checkedPermissionItems);
-
   return (
     <CheckBoxWrapper>
-      {permissions?.map((item, i) => (
-        <div className="checkbox-wrapper" key={item.id}>
+      {items?.map((item, i) => (
+        <label className="checkbox-wrapper" key={item.id}>
           <Checkbox
             id={item?.category}
             name={item?.category}
             value={item.category}
-            checked={permissions[i].isChecked}
-            onChange={handlePermissionChange}
+            checked={items[i].isChecked}
+            onChange={handleChange}
           />
-          <label htmlFor={item?.category} className="checkbox-label">
+          <span  className="checkbox-label">
             {item.category}
-          </label>
-        </div>
+          </span>
+        </label>
       ))}
     </CheckBoxWrapper>
   );
