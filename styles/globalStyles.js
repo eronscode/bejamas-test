@@ -99,6 +99,7 @@ export default createGlobalStyle`
   html {
     touch-action: manipulation;
   }
+  
 
   
 `;

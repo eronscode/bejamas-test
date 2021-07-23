@@ -7,7 +7,7 @@ function FeaturedProduct() {
     <FeaturedWrapper>
       <div className="header">
         <h4>Some things about me</h4>
-        <div>
+        <div className="hidden-sm">
           <Button variant="primary">Add to cart</Button>
         </div>
       </div>
@@ -24,6 +24,9 @@ function FeaturedProduct() {
         </div>
         <span className="tag-label">Photo of the day</span>
       </div>
+      <div className="hidden-lg">
+          <Button variant="primary">Add to cart</Button>
+        </div>
       <FeaturedDescription>
         <div className="about">
           <h4>About the Samurai King Resting</h4>

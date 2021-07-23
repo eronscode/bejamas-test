@@ -51,6 +51,24 @@ export const FeaturedWrapper = styled.div`
     }
     } */
   }
+
+  .hidden-sm {
+    display: block;
+   
+  }
+  .hidden-lg {
+    display: none;
+  }
+
+  @media screen and (max-width: 966px) {
+    .hidden-lg {
+      display: block;
+      margin-top: 20px;
+    }
+    .hidden-sm {
+      display: none;
+    }
+  }
 `;
 
 export const FeaturedDescription = styled.div`
@@ -58,6 +76,8 @@ export const FeaturedDescription = styled.div`
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+  border-bottom: 4px solid ${color.secondary.inc1};
+  padding-bottom: 34px;
 
   .about {
     width: 50%;
@@ -76,7 +96,6 @@ export const FeaturedDescription = styled.div`
       ${font.size(18)}
       line-height: 180%;
       color: ${color.primary.inc1};
-
     }
   }
 

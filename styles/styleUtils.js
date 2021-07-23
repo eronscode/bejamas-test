@@ -29,4 +29,21 @@ export const mixins = {
     cursor: pointer;
     user-select: none;
   `,
+  scrollableY: css`
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  `,
+  customScrollbar: ({ width = 8, background = color.backgroundMedium } = {}) => css`
+    &::-webkit-scrollbar {
+      width: ${width}px;
+    }
+    &::-webkit-scrollbar-track {
+      background: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 99px;
+      background: ${background};
+    }
+  `,
 };
