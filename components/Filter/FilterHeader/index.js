@@ -24,11 +24,11 @@ function FilterHeader() {
         <span>/</span>
         <h4>Premium Photos</h4>
       </div>
-      <div className="sort-wrapper">
+      <div className="sort-wrapper ">
         <span className="hidden-lg">
           <FilterToggleIcon />
         </span>
-        <div className="arrow-sort">
+        <div className="arrow-sort hidden-sm">
           <ArrowUpIcon
             className={isAscending || ""}
             onClick={() => toggleSort("ASC")}
@@ -124,6 +124,13 @@ const Wrapper = styled.div`
     }
     .hidden-sm {
       display: none;
+    }
+  }
+  @media screen and (max-width: 966px) {
+    .title {
+        h4, span {
+            ${font.size(18)}
+        }
     }
   }
 `;
