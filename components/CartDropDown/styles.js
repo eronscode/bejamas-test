@@ -30,12 +30,15 @@ export const CartItemWrapper = styled.div`
   border-bottom: 1px solid #c2c2c2;
   padding: 20px 0;
   .item-info {
+    width: 60%;
+    padding: 0 18px 0 0;
     h4 {
       ${font.bold}
       ${font.size(20)}
-      ${mixins.truncateText}
-      line-height: 22px;
+      /* ${mixins.truncateText} */
+      line-height: 27px;
       margin: 0 0 10px 0;
+      word-break: break-word;
     }
     p {
       ${font.size(29)}
@@ -47,6 +50,7 @@ export const CartItemWrapper = styled.div`
 
   .item-image {
     width: 111px;
+    
 
     > div {
       position: unset !important;
