@@ -4,7 +4,7 @@ export const color = {
   primary: {
     default: "#000000",
     inc1: "#656565",
-    inc2: "",
+    inc2: " #1D1D1D",
     inc3: "",
   },
   secondary: {

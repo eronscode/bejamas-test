@@ -70,7 +70,7 @@ export default createGlobalStyle`
     }
   }
   [role="button"], button, input, textarea {
-    appearance: none;
+    ${'' /* appearance: none; */}
   }
   select:-moz-focusring {
     color: transparent;
@@ -99,6 +99,7 @@ export default createGlobalStyle`
   html {
     touch-action: manipulation;
   }
+  
   
 
   
