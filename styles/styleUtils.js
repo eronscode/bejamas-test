@@ -4,8 +4,9 @@ export const color = {
   primary: {
     default: "#000000",
     inc1: "#656565",
-    inc2: " #1D1D1D",
+    inc2: "#1D1D1D",
     inc3: "#9B9B9B",
+    inc4: "#505f79"
   },
   secondary: {
     default: "#ffffff",
@@ -34,16 +35,23 @@ export const mixins = {
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   `,
-  customScrollbar: ({ width = 8, background = color.backgroundMedium } = {}) => css`
+  customScrollbar: ({
+    width = 8,
+    background = color.primary.inc4,
+  } = {}) => css`
+
+
+    &::-webkit-scrollbar-track {
+      background-color: #ebecf0;
+    }
+
     &::-webkit-scrollbar {
       width: ${width}px;
     }
-    &::-webkit-scrollbar-track {
-      background: none;
-    }
+
     &::-webkit-scrollbar-thumb {
-      border-radius: 99px;
-      background: ${background};
+      border-radius: 100px;
+      background-color: ${background};
     }
   `,
 };
