@@ -14,7 +14,7 @@ import { ResponsiveArticle } from "@utils/placeholders";
 export default function Home() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const { products, loadProducts } = useAppContext();
+  const {  loadProducts } = useAppContext();
 
   useEffect(() => useProductService(setLoading, setError, loadProducts), []);
 
@@ -26,10 +26,9 @@ export default function Home() {
     return "Error Occured";
   }
 
-  const featuredProduct = products.filter((item) => item.featured);
   return (
     <>
-      <FeaturedProduct product={featuredProduct[0]} />
+      <FeaturedProduct  />
       <ProductContainer />
     </>
   );

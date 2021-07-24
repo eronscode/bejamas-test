@@ -2,8 +2,12 @@ import { FeaturedDescription, FeaturedWrapper } from "./styles";
 import Button from "@components/Button";
 import Image from "next/image";
 import { kilobytesToMegaBytes } from "@utils/methods";
+import { useAppContext } from "context/app.context";
 
-function FeaturedProduct({ product }) {
+function FeaturedProduct() {
+  const { products, addToCart } = useAppContext();
+  const filtered = products.filter((item) => item.featured);
+  const product = filtered[0];
   // var items = [
   //     { name: 'Edward A', value: 21 },
   //     { name: 'Sharpe I', value: 37 },
@@ -57,7 +61,9 @@ function FeaturedProduct({ product }) {
       <div className="header">
         <h4>{product.name}</h4>
         <div className="hidden-sm">
-          <Button variant="primary">Add to cart</Button>
+          <Button onClick={() => addToCart(product)} variant="primary">
+            Add to cart
+          </Button>
         </div>
       </div>
       <div className="image-wrapper">
@@ -76,7 +82,9 @@ function FeaturedProduct({ product }) {
         <span className="tag-label">Photo of the day</span>
       </div>
       <div className="hidden-lg">
-        <Button variant="primary">Add to cart</Button>
+        <Button onClick={() => addToCart(product)} variant="primary">
+          Add to cart
+        </Button>
       </div>
       <FeaturedDescription>
         <div className="about">
