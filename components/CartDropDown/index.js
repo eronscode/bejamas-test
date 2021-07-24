@@ -1,19 +1,21 @@
 import Button from "@components/Button";
 import { CloseIcon } from "@utils/icons";
 import CartItem from "./cart-item";
-import { CartDropDownWrapper } from "./styles";
+import { CartContent, CartDropDownWrapper } from "./styles";
 
-function CartDropDown() {
+function CartDropDown({close }) {
   return (
     <CartDropDownWrapper>
       <div className="close-icon">
-        <CloseIcon />
+        <span onClick={close}><CloseIcon /></span>
       </div>
+      <CartContent>
       <CartItem />
       <CartItem />
       <CartItem />
       <CartItem />
-      <div>
+      </CartContent>
+      <div className="footer">
         <Button>Clear Items</Button>
       </div>
     </CartDropDownWrapper>

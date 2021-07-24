@@ -8,19 +8,37 @@ export const CartDropDownWrapper = styled.div`
   top: 98px;
   background: ${color.secondary.default};
   border: 4px solid ${color.secondary.inc1};
-
+  z-index: 1;
   .close-icon {
     text-align: right;
     svg {
-        width: 18px;
-        ${mixins.clickable}
+      width: 18px;
+      ${mixins.clickable}
     }
+  }
+  .footer{
+    margin: 20px 0 0;
   }
   padding: 15px 20px;
   @media screen and (max-width: 768px) {
     width: 300px;
     right: 11px;
   }
+`;
+
+export const CartContent = styled.div`
+ padding: 0px 22px 22px 0;
+    margin-top: 20px;
+    overflow: auto;
+    overflow-x: hidden;
+    resize: none;
+    height: 100%;
+    max-height: 295px;
+  p {
+    margin: 0;
+  }
+
+  ${mixins.customScrollbar(5)}
 `;
 
 export const CartItemWrapper = styled.div`
@@ -50,7 +68,6 @@ export const CartItemWrapper = styled.div`
 
   .item-image {
     width: 111px;
-    
 
     > div {
       position: unset !important;

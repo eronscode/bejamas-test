@@ -7,8 +7,8 @@ import FilterSideBar from "../FilterSideBar";
 function FilterModal({ isOpen, toggleModal = () => {} }) {
   return (
     <ModalWrapper>
-      <Modal className="hidden-lg" isOpen={true}>
-        <div>
+      <Modal className="hidden-lg" isOpen={false}>
+        <div style={{ height: "100vh" }}>
           <ModalContent>
             <FilterSideBar />
           </ModalContent>
@@ -50,7 +50,7 @@ const ModalFooter = styled.div`
   position: sticky;
   top: 0;
   background: ${color.secondary.default};
-  border: 4px solid ${color.secondary.inc1};
+  border-top: 4px solid ${color.secondary.inc1};
   bottom: 0;
   .item {
     flex-grow: 1;

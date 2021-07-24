@@ -1,10 +1,15 @@
-import Layout from '@components/Layout/Layout';
-import '@styles/fontStyle.css';
+import Layout from "@components/Layout";
+import "@styles/fontStyle.css";
+import { AppProvider } from "context/app.context";
 
 function MyApp({ Component, pageProps }) {
-  return <Layout {...pageProps}>
-    <Component {...pageProps} />
-  </Layout>
+  return (
+    <AppProvider>
+      <Layout {...pageProps}>
+        <Component {...pageProps} />
+      </Layout>
+    </AppProvider>
+  );
 }
 MyApp.getInitialProps = async function ({ Component, ctx }) {
   let pageProps = {};
@@ -14,4 +19,4 @@ MyApp.getInitialProps = async function ({ Component, ctx }) {
   pageProps.query = ctx.query;
   return { pageProps };
 };
-export default MyApp
+export default MyApp;
