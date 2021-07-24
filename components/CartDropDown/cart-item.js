@@ -1,18 +1,32 @@
-import Image from 'next/image';
-import { CartItemWrapper } from './styles';
+import Image from "next/image";
+import { currencyTransform } from "@utils/methods";
+import { CartItemWrapper } from "./styles";
 
-function CartItem() {
-    return (
-        <CartItemWrapper>
-            <div className="item-info">
-                <h4>Testimg</h4>
-                <p>$10000</p>
-            </div>
-            <div className="item-image">
-                <Image className="image" src="/images/fashion4.jpg" layout="fill" alt="cart-item" />
-            </div>
-        </CartItemWrapper>
-    )
+function CartItem(props) {
+  const { image, currency, price, name } = props;
+  return (
+    <CartItemWrapper>
+      <div className="item-info">
+        <h4>{name}</h4>
+        <p>
+          {currencyTransform(currency)}
+          {price}
+        </p>
+      </div>
+      <div className="item-image">
+        <div className="image-container">
+          <Image
+            className="image"
+            src={image.src}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="top center"
+            alt={image.alt}
+          />
+        </div>
+      </div>
+    </CartItemWrapper>
+  );
 }
 
-export default CartItem
+export default CartItem;

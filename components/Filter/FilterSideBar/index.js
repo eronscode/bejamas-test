@@ -8,12 +8,12 @@ function FilterSideBar() {
   return (
     <Wrapper>
       <div className="item">
-        <h4 className="header">Category</h4>
+        <h4 className="title">Category</h4>
         <MultiCheckBox />
       </div>
       <div className="divider"></div>
       <div className="item">
-        <h4 className="header">Price Range</h4>
+        <h4 className="title">Price Range</h4>
         <SingleCheckBox />
       </div>
     </Wrapper>
@@ -21,7 +21,7 @@ function FilterSideBar() {
 }
 
 const Wrapper = styled.div`
-  .header {
+  .title {
     ${font.size(23)}
     ${font.bold}
     line-height: 24px;

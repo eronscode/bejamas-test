@@ -16,7 +16,7 @@ export const CartDropDownWrapper = styled.div`
       ${mixins.clickable}
     }
   }
-  .footer{
+  .footer {
     margin: 20px 0 0;
   }
   padding: 15px 20px;
@@ -27,13 +27,13 @@ export const CartDropDownWrapper = styled.div`
 `;
 
 export const CartContent = styled.div`
- padding: 0px 22px 22px 0;
-    margin-top: 20px;
-    overflow: auto;
-    overflow-x: hidden;
-    resize: none;
-    height: 100%;
-    max-height: 295px;
+  padding: 0px 22px 22px 0;
+  margin-top: 20px;
+  overflow: auto;
+  overflow-x: hidden;
+  resize: none;
+  height: 100%;
+  max-height: 295px;
   p {
     margin: 0;
   }
@@ -47,6 +47,7 @@ export const CartItemWrapper = styled.div`
   align-items: center;
   border-bottom: 1px solid #c2c2c2;
   padding: 20px 0;
+
   .item-info {
     width: 60%;
     padding: 0 18px 0 0;
@@ -67,7 +68,12 @@ export const CartItemWrapper = styled.div`
   }
 
   .item-image {
-    width: 111px;
+    .image-container {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    /* width: 111px;
 
     > div {
       position: unset !important;
@@ -78,6 +84,6 @@ export const CartItemWrapper = styled.div`
       width: 100% !important;
       position: relative !important;
       height: unset !important;
-    }
+    } */
   }
 `;

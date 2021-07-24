@@ -10,16 +10,19 @@ const propTypes = {};
 const defaultProps = {};
 
 function Header() {
-  const { isCartOpen, toggleCart } = useAppContext();
+  const { cart, isCartOpen, toggleCart, resetCart } = useAppContext();
+  console.log({ cart });
   return (
     <HeaderWrapper>
       <Image src="/images/logo.jpg" alt="logo" width={156} height={26} />
       <div>
         <span onClick={toggleCart}>
           <CartIcon />
-          <span className="cart-badge">1</span>
+          {cart.length !== 0 && (
+            <span className="cart-badge">{cart.length}</span>
+          )}
         </span>
-        {isCartOpen && <CartDropDown close={toggleCart} /> }
+        {isCartOpen && <CartDropDown cart={cart} resetCart={resetCart} close={toggleCart} />}
       </div>
     </HeaderWrapper>
   );

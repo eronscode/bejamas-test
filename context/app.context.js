@@ -10,19 +10,35 @@ function useAppActions() {
     dispatch({ type: "TOGGLE_CART" });
   }
 
+  function loadProducts(data) {
+    dispatch({ type: "INITIALIZE_PRODUCT", data });
+  }
+
+  function addToCart(data) {
+    dispatch({ type: "ADD_TO_CART", data });
+  }
+
+  function resetCart() {
+    dispatch({ type: "RESET_CART" });
+  }
+
   return {
     state,
     toggleCart,
-    dispatch,
+    loadProducts,
+    addToCart,
+    resetCart
   };
 }
 
 function AppProvider(params) {
-  const { state, toggleCart } = useAppActions();
+  const { state, ...restProps } = useAppActions();
 
   const value = {
     isCartOpen: state.isCartOpen,
-    toggleCart,
+    products: state.products,
+    cart: state.cart,
+    ...restProps,
   };
   return <AppContext.Provider value={value} {...params} />;
 }

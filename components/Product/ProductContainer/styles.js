@@ -8,7 +8,7 @@ export const PContainter = styled.div`
   }
   .body {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
   }
   .aside {
     width: 16%;
@@ -26,7 +26,7 @@ export const PContainter = styled.div`
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
-    padding: 0 20px;
+    padding: 0 0 50px 20px;
   }
 
   @media screen and (max-width: 966px) {

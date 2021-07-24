@@ -1,27 +1,29 @@
 import Button from "@components/Button";
+import { currencyTransform } from "@utils/methods";
 import Image from "next/image";
 import { ProductCardContainer } from "./styles";
 
-function ProductCard() {
+function ProductCard(props) {
+  const { bestseller, price, currency, category, image, name, addToCart } = props;
   return (
     <ProductCardContainer>
       <div className="">
         <div className="image-container">
           <Image
             className="image"
-            src="/images/fashion4.jpg"
+            src={image.src}
             layout="fill"
             objectFit="cover"
             objectPosition="top center"
-            alt="cart-item"
+            alt={image.alt}
           />
-          <span className="tag-label">Best Seller</span>
-          <Button className="cart-button">add to cart</Button>
+          {bestseller && <span className="tag-label">Best Seller</span>}
+          <Button className="cart-button" onClick={addToCart}>add to cart</Button>
         </div>
         <div className="product-info">
-          <span>People</span>
-          <h4>Red Bench</h4>
-          <p>$3.89 </p>
+          <span>{category}</span>
+          <h4>{name}</h4>
+          <p>{currencyTransform(currency)}{price} </p>
         </div>
       </div>
     </ProductCardContainer>

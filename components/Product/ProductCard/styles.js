@@ -2,6 +2,7 @@ import { color, font } from "@styles/styleUtils";
 import styled from "styled-components";
 
 export const ProductCardContainer = styled.div`
+  text-transform: capitalize;
   .image-container {
     width: 100%;
     height: 390px;
@@ -19,8 +20,6 @@ export const ProductCardContainer = styled.div`
       ${font.size(20)}
       line-height: 22px;
     }
-
-    
   }
 
   .product-info {
@@ -36,7 +35,7 @@ export const ProductCardContainer = styled.div`
       ${font.size(34)}
       line-height: 37px;
       margin: 7px 0;
-      color: ${color.primary.default}
+      color: ${color.primary.default};
     }
     p {
       ${font.size(29)}
@@ -48,14 +47,13 @@ export const ProductCardContainer = styled.div`
 
   .cart-button {
     position: absolute;
-      z-index: 1;
-      left: 0;
-      bottom: 0;
-      display: block;
-    }
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    display: block;
+  }
   @media screen and (min-width: 966px) {
     .cart-button {
-      
       display: none;
     }
 
