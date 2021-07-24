@@ -62,7 +62,7 @@ function FeaturedProduct() {
         <div className="image-container">
           <Image
             className="image"
-            src="/images/fashion4.jpg"
+            src="https://images.pexels.com/photos/7999461/pexels-photo-7999461.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200"
             layout="fill"
             objectFit="cover"
             objectPosition="top center"
