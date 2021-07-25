@@ -1,16 +1,11 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { createPortal } from "react-dom";
 import {
-  ModalContent,
-  ModalFooter,
+  
   ModalHeader,
   ScrollOverlay,
   StyledModal,
 } from "./styles";
-import isEmpty from "lodash/isEmpty";
-import Button from "@components/Button";
-import Portal from "@utils/hocs/portal";
+import Portal from "@utils/hocs/Portal";
 import { CloseIcon } from "@utils/icons";
 
 const propTypes = {
