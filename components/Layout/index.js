@@ -24,6 +24,18 @@ function Layout({ children }) {
             as="font"
             crossOrigin=""
           />
+          <link
+            rel="preload"
+            href="/fonts/archivo/Archivo-Bold.woff2"
+            as="font"
+            crossOrigin=""
+          />
+          <link
+            rel="preload"
+            href="/fonts/archivo/Archivo-Regular.woff2"
+            as="font"
+            crossOrigin=""
+          />
         </Head>
 
         <LayoutWrapper>
