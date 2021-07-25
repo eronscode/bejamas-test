@@ -1,45 +1,60 @@
+import { useRef, useState } from "react";
 import FilterHeader from "@components/Filter/FilterHeader";
 import FilterModal from "@components/Filter/FilterModal";
 import FilterSideBar from "@components/Filter/FilterSideBar";
 import Pagination from "@components/Pagination";
-import { paginator } from "@utils/methods";
+import { handleFilteringSorting, paginator } from "@utils/methods";
 import { useAppContext } from "context/app.context";
-import { useState } from "react";
 import ProductCard from "../ProductCard";
 import { PContainter } from "./styles";
+import { ITEMS_PER_PAGE } from "@utils/constants";
 
 function ProductContainer() {
-  const { products, addToCart } = useAppContext();
+  const {
+    products,
+    addToCart,
+    sortOptions,
+    priceFilterOptions,
+    categoryFilterOptions,
+  } = useAppContext();
   const [page, setPage] = useState(1);
-  const [paginate, setPaginate] = useState(false);
+  const containerRef = useRef();
 
   function paginateData(page, data) {
-    const paginate = paginator(data, 2);
+    const paginate = paginator(data, ITEMS_PER_PAGE);
     return paginate(page);
   }
 
   function paginateOtherData(data) {
-    setPaginate(true);
     setPage(data);
-    // this.searchRef.current.scrollIntoView({
-    //   behavior: "smooth",
-    //   block: "start",
-    //   inline: "nearest",
-    // });
+    containerRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
   }
 
   if (!products) return null;
   const mainProducts = products.filter((item) => !item.featured);
-  console.log({ mainProducts });
 
-  let newData = paginateData(page, mainProducts);
-  let pageLength = Math.ceil(mainProducts.length / 2);
+  const filteredProducts = handleFilteringSorting(
+    mainProducts,
+    categoryFilterOptions,
+    priceFilterOptions,
+    sortOptions?.order,
+    sortOptions?.key
+  );
+
+  let newData = paginateData(page, filteredProducts);
+  let pageLength = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   let pre_page = page - 1 ? page - 1 : null;
   let next_page = pageLength > page ? page + 1 : null;
 
+  // console.log({neeww})
+  console.log({priceFilterOptions})
 
   return (
-    <PContainter>
+    <PContainter ref={containerRef}>
       <div className="header">
         <FilterHeader />
       </div>

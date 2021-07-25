@@ -2,6 +2,7 @@ import { color, font } from "@styles/styleUtils";
 import styled from "styled-components";
 
 export const CheckBoxWrapper = styled.div`
+  text-transform: capitalize;
   .checkbox-wrapper {
     margin: 22px 0;
     display: block;

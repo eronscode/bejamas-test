@@ -2,19 +2,27 @@ import styled from "styled-components";
 import { color, font } from "@styles/styleUtils";
 import { ArrowDownIcon, ArrowUpIcon, FilterToggleIcon } from "@utils/icons";
 import { useState } from "react";
+import { useAppContext } from "context/app.context";
 
 function FilterHeader() {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState("name");
   const [currentSort, setCurrentSort] = useState(null);
-  const isAscending = currentSort === "ASC" && "active";
-  const isDescending = currentSort === "DESC" && "active";
+  const { sortProducts } = useAppContext()
+  const isAscending = currentSort === "asc" && "active";
+  const isDescending = currentSort === "desc" && "active";
 
   function handleChange(e) {
-        setValue(e.target.value)
+    setCurrentSort(null)
+    setValue(e.target.value)
   }
 
-  function toggleSort(value) {
-    setCurrentSort(value);
+  function toggleSort(order) {
+    setCurrentSort(order);
+    const payload = {
+      key: value,
+      order
+    }
+    sortProducts(payload)
   }
 
   return (
@@ -31,11 +39,11 @@ function FilterHeader() {
         <div className="arrow-sort hidden-sm">
           <ArrowUpIcon
             className={isAscending || ""}
-            onClick={() => toggleSort("ASC")}
+            onClick={() => toggleSort("asc")}
           />
           <ArrowDownIcon
             className={isDescending || ""}
-            onClick={() => toggleSort("DESC")}
+            onClick={() => toggleSort("desc")}
           />
           <span>Sort By</span>
         </div>
@@ -45,8 +53,8 @@ function FilterHeader() {
             value={value}
             onChange={handleChange}
           >
-            <option value="SORT_PRICE">Price</option>
-            <option value="SORT_NAME">Name</option>
+            <option value="name">Name</option>
+            <option value="price">Price</option>
           </select>
         </div>
       </div>

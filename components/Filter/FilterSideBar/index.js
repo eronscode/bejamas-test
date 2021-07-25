@@ -1,20 +1,49 @@
+import { useState } from "react";
 import MultiCheckBox from "@components/CheckBox/MultiCheckBox";
 import SingleCheckBox from "@components/CheckBox/SingleCheckBox";
 import styled from "styled-components";
 
 import { color, font } from "@styles/styleUtils";
+import { useAppContext } from "context/app.context";
+import {
+  createCategoryFilter,
+  extractKeyValue,
+  priceRageGenerator,
+} from "@utils/methods";
 
 function FilterSideBar() {
+  const [checkedCategory, setCheckedCategory] = useState([]);
+  const { products, filterProductsByCategory, filterProductsByPrice} = useAppContext();
+
+  function handleCategoryFilter(values) {
+    setCheckedCategory(values);
+    filterProductsByCategory(values);
+  }
+
+  function handlePriceFilter(values) {
+    filterProductsByPrice(values)
+  }
+
+  const mainProducts = products.filter((item) => !item.featured);
+
+  const categories = createCategoryFilter(mainProducts);
+  const extractedPrices = extractKeyValue(mainProducts, "price");
+  const prices = priceRageGenerator(extractedPrices);
+
   return (
     <Wrapper>
       <div className="item">
         <h4 className="title">Category</h4>
-        <MultiCheckBox />
+        <MultiCheckBox
+          values={categories}
+          checkedItems={checkedCategory}
+          onChange={handleCategoryFilter}
+        />
       </div>
       <div className="divider"></div>
       <div className="item">
         <h4 className="title">Price Range</h4>
-        <SingleCheckBox />
+        <SingleCheckBox values={prices} onChange={handlePriceFilter} />
       </div>
     </Wrapper>
   );

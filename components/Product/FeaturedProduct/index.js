@@ -8,54 +8,9 @@ function FeaturedProduct() {
   const { products, addToCart } = useAppContext();
   const filtered = products.filter((item) => item.featured);
   const product = filtered[0];
-  // var items = [
-  //     { name: 'Edward A', value: 21 },
-  //     { name: 'Sharpe I', value: 37 },
-  //     { name: 'And', value: 45 },
-  //     { name: 'The', value: -12 },
-  //     { name: 'Magnetic', value: 13 },
-  //     { name: 'Zeros', value: 37 }
-  //   ];
-  // function compareValues(key, order = 'asc') {
-  //     return function innerSort(a, b) {
-  //       if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
-  //         // property doesn't exist on either object
-  //         return 0;
-  //       }
-
-  //       const varA = (typeof a[key] === 'string')
-  //         ? a[key].toUpperCase() : a[key];
-  //       const varB = (typeof b[key] === 'string')
-  //         ? b[key].toUpperCase() : b[key];
-
-  //       let comparison = 0;
-  //       if (varA > varB) {
-  //         comparison = 1;
-  //       } else if (varA < varB) {
-  //         comparison = -1;
-  //       }
-  //       return (
-  //         (order === 'desc') ? (comparison * -1) : comparison
-  //       );
-  //     };
-  //   }
-  //   const yrm = compareValues('name', 'asc')
-  //   items.sort(function(b, a) {
-  //     var nameA = a.name.toUpperCase(); // ignore upper and lowercase
-  //     var nameB = b.name.toUpperCase(); // ignore upper and lowercase
-  //     if (nameA < nameB) {
-  //       return -1;
-  //     }
-  //     if (nameA > nameB) {
-  //       return 1;
-  //     }
-
-  //     // names must be equal
-  //     return 0;
-  //   });
-
-  //     console.log(items)
+  
   if (!product) return null;
+  
   return (
     <FeaturedWrapper>
       <div className="header">

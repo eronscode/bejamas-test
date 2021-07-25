@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CheckBoxWrapper } from "./styles";
 
 const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
@@ -11,25 +11,11 @@ const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
   />
 );
 
-function SingleCheckBox({ onChange = () => null }) {
-  const [checkedItem, setCheckedItem] = useState("");
-  const [items, setItems] = useState([
-    {
-      id: "1",
-      category: "Item 1",
-      isChecked: false,
-    },
-    {
-      id: "2",
-      category: "Wooooou",
-      isChecked: false,
-    },
-    {
-      id: "3",
-      category: "Hello",
-      isChecked: false,
-    },
-  ]);
+function SingleCheckBox({ values, checkedItems, onChange = () => null }) {
+  const [items, setItems] = useState([]);
+  
+  useEffect(() => setItems(values), []);
+
   function handleChange(e) {
     const isChecked = e.target.checked;
     const value = e.target.value;
@@ -40,36 +26,30 @@ function SingleCheckBox({ onChange = () => null }) {
     }));
 
     const newState = copy.map((product) =>
-      product.category === value
+      product.price === value
         ? { ...product, isChecked: isChecked }
         : product
     );
     setItems(newState);
 
     if (isChecked) {
-      setCheckedItem(value);
       onChange(value);
     } else {
-        setCheckedItem("");
-        onChange("");
+      onChange("");
     }
   }
-
 
   return (
     <CheckBoxWrapper>
       {items?.map((item, i) => (
         <label className="checkbox-wrapper" key={item.id}>
           <Checkbox
-            id={item?.category}
-            name={item?.category}
-            value={item.category}
+            name={item?.price}
+            value={item.price}
             checked={items[i].isChecked}
             onChange={handleChange}
           />
-          <span  className="checkbox-label">
-            {item.category}
-          </span>
+          <span className="checkbox-label">{item.captionText}</span>
         </label>
       ))}
     </CheckBoxWrapper>
