@@ -1,10 +1,13 @@
+import { ArrowLeftIcon, ArrowRightIcon } from "@utils/icons";
+import { PaginationWrapper } from "./styles";
+
 function Pagination(props) {
   const { length, prev, next, currentPage, click } = props;
-  const pad = [...Array(props.length)].map((e, i) => (
+  const pad = [...Array(length)].map((e, i) => (
     <button
       key={i}
-      className={props.currentPage == i + 1 ? "active" : null}
-      onClick={() => props.click(i + 1)}
+      className={currentPage == i + 1 ? "active" : null}
+      onClick={() => click(i + 1)}
     >
       {i + 1}
     </button>
@@ -13,19 +16,23 @@ function Pagination(props) {
   return (
     <PaginationWrapper>
       <div className="pagination">
-        <button
-          disabled={props.prev === null ? true : false}
-          onClick={() => props.click(props.prev)}
-        >
-          &laquo;
-        </button>
+        {prev !== null && (
+          <button
+            disabled={prev === null ? true : false}
+            onClick={() => click(prev)}
+          >
+            <ArrowLeftIcon />
+          </button>
+        )}
         {pad}
-        <button
-          disabled={props.next === null ? true : false}
-          onClick={() => props.click(props.next)}
-        >
-          &raquo;
-        </button>
+        {next !== null && (
+          <button
+            disabled={next === null ? true : false}
+            onClick={() => click(next)}
+          >
+            <ArrowRightIcon />
+          </button>
+        )}
       </div>
     </PaginationWrapper>
   );
