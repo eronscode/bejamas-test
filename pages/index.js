@@ -5,9 +5,7 @@ import FilterHeader from "@components/Filter/FilterHeader";
 import FilterSideBar from "@components/Filter/FilterSideBar";
 import FeaturedProduct from "@components/Product/FeaturedProduct";
 import ProductContainer from "@components/Product/ProductContainer";
-import { useProductService } from "@utils/hooks/useProductService";
-import Head from "next/head";
-import Image from "next/image";
+import productService from "@utils/hooks/useProductService";
 import { useAppContext } from "context/app.context";
 import { ResponsiveArticle } from "@utils/placeholders";
 
@@ -16,7 +14,7 @@ export default function Home() {
   const [error, setError] = useState(false);
   const {  loadProducts } = useAppContext();
 
-  useEffect(() => useProductService(setLoading, setError, loadProducts), []);
+  useEffect(() => productService.fetchProducts(setLoading, setError, loadProducts), []);
 
   if (loading) {
     return <ResponsiveArticle />;

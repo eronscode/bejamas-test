@@ -28,7 +28,7 @@ function Layout({ children }) {
 
         <LayoutWrapper>
           <Header />
-          {children}
+          <div>{children}</div>
         </LayoutWrapper>
       </div>
     </>
