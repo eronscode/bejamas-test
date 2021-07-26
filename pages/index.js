@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import productService from "@utils/hooks/useProductService";
 import { useAppContext } from "context/app.context";
 import { ContentPlaceholder, NoData } from "@utils/placeholders";
-
-const FeaturedProduct = dynamic(() => import('@components/Product/FeaturedProduct'))
-const ProductContainer = dynamic(() => import('@components/Product/ProductContainer'))
+import FeaturedProduct from "@components/Product/FeaturedProduct";
+import ProductContainer from "@components/Product/ProductContainer";
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +17,7 @@ export default function Home() {
   );
 
   if (loading) {
-    return <ContentPlaceholder/>;
+    return <ContentPlaceholder />;
   }
 
   if (error) {

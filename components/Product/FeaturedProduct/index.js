@@ -23,7 +23,7 @@ function FeaturedProduct() {
       </div>
       <div className="image-wrapper">
         <div className="image-container">
-          {/* {product.image && (
+          {product.image && (
             <Image
               className="image"
               src={product.image.src}
@@ -37,7 +37,7 @@ function FeaturedProduct() {
               blurDataURL="/images/blur.jpg"
               priority
             />
-          )} */}
+          )}
         </div>
         <span className="tag-label">Photo of the day</span>
       </div>

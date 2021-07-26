@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import dynamic from "next/dynamic";
 import FilterHeader from "@components/Filter/FilterHeader";
 import FilterSideBar from "@components/Filter/FilterSideBar";
 import Pagination from "@components/Pagination";
@@ -10,8 +9,9 @@ import { PContainter } from "./styles";
 import { ITEMS_PER_PAGE } from "@utils/constants";
 import { NoData } from "@utils/placeholders";
 import { isEmpty } from "lodash";
+import FilterModal from '@components/Filter/FilterModal'
 
-const FilterModal = dynamic(() => import("@components/Filter/FilterModal"));
+
 
 function ProductContainer() {
   const {
