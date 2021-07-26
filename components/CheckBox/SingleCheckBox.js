@@ -12,10 +12,9 @@ const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
   />
 );
 
-function SingleCheckBox({ values, checkedItems,  onChange = () => null }) {
+function SingleCheckBox({ values, checkedItems, onChange = () => null }) {
   const [items, setItems] = useState([]);
-  
-  
+
   useEffect(() => {
     if (!isEmpty(checkedItems)) {
       const newItems = values.map((product) => {
@@ -23,9 +22,9 @@ function SingleCheckBox({ values, checkedItems,  onChange = () => null }) {
           ? { ...product, isChecked: true }
           : product;
       });
-      
+
       setItems(newItems);
-    }else{
+    } else {
       setItems(values);
     }
   }, [checkedItems]);
@@ -40,9 +39,7 @@ function SingleCheckBox({ values, checkedItems,  onChange = () => null }) {
     }));
 
     const newState = copy.map((product) =>
-      product.price === value
-        ? { ...product, isChecked: isChecked }
-        : product
+      product.price === value ? { ...product, isChecked: isChecked } : product
     );
     setItems(newState);
 
@@ -58,9 +55,10 @@ function SingleCheckBox({ values, checkedItems,  onChange = () => null }) {
       {items?.map((item, i) => (
         <label className="checkbox-wrapper" key={item.id}>
           <Checkbox
-            name={item?.price}
+            id={item?.id}
+            name={item.price}
             value={item.price}
-            checked={items[i].isChecked}
+            checked={item.isChecked}
             onChange={handleChange}
           />
           <span className="checkbox-label">{item.captionText}</span>

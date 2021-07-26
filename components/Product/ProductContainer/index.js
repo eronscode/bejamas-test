@@ -9,9 +9,7 @@ import { PContainter } from "./styles";
 import { ITEMS_PER_PAGE } from "@utils/constants";
 import { NoData } from "@utils/placeholders";
 import { isEmpty } from "lodash";
-import FilterModal from '@components/Filter/FilterModal'
-
-
+import FilterModal from "@components/Filter/FilterModal";
 
 function ProductContainer() {
   const {
@@ -29,6 +27,11 @@ function ProductContainer() {
   const [checkedPrice, setCheckedPrice] = useState([]);
   const containerRef = useRef();
 
+  /*
+    # ------------------------------------------------------------ #
+    # Declarations and functions to handle sorting and filtering   #
+    # ------------------------------------------------------------ #
+  */
   const mainProducts = products.filter((item) => !item.featured);
 
   const filteredProducts = handleFilteringSorting(
@@ -38,12 +41,6 @@ function ProductContainer() {
     sortOptions?.order,
     sortOptions?.key
   );
-
-  let newData = paginateData(page, filteredProducts);
-  let pageLength = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
-  let pre_page = page - 1 ? page - 1 : null;
-  let next_page = pageLength > page ? page + 1 : null;
-
   useEffect(() => {
     setPage(1);
   }, [categoryFilterOptions, priceFilterOptions, sortOptions]);
@@ -58,6 +55,12 @@ function ProductContainer() {
     filterProductsByPrice(values);
   }
 
+  /*
+    # ------------------------------------------------- #
+    # Declarations and functions to handle pagination   #
+    # ------------------------------------------------- #
+  */
+
   function paginateData(page, data) {
     const paginate = paginator(data, ITEMS_PER_PAGE);
     return paginate(page);
@@ -71,6 +74,11 @@ function ProductContainer() {
       inline: "nearest",
     });
   }
+
+  const newData = paginateData(page, filteredProducts);
+  const pageLength = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
+  const pre_page = page - 1 ? page - 1 : null;
+  const next_page = pageLength > page ? page + 1 : null;
 
   function toggleModal() {
     setIsModalOpen((prev) => !prev);

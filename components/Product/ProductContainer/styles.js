@@ -1,4 +1,3 @@
-import { color, font } from "@styles/styleUtils";
 import styled from "styled-components";
 
 export const PContainter = styled.div`

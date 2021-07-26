@@ -57,10 +57,10 @@ function MultiCheckBox({ values, checkedItems, onChange }) {
         return(
         <label className="checkbox-wrapper" key={item.id}>
           <Checkbox
-            id={item?.id}
-            name={item?.category}
+            id={item.id}
+            name={item.category}
             value={item.category}
-            checked={items[i].isChecked}
+            checked={item.isChecked}
             onChange={handleChange}
           />
           <span className="checkbox-label">{item.category}</span>

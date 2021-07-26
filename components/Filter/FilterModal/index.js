@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "@components/Button";
 import Modal from "@components/Modal";
 import { color, mixins } from "@styles/styleUtils";
-import styled, { css } from "styled-components";
+import styled  from "styled-components";
 import FilterSideBar from "../FilterSideBar";
 import { useAppContext } from "context/app.context";
 import { isEmpty } from "lodash";

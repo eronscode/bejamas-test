@@ -69,7 +69,6 @@ function Modal({
   );
 }
 
-// const $root = document.getElementById("app");
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;

@@ -1,6 +1,6 @@
+import Image from "next/image";
 import { FeaturedDescription, FeaturedWrapper } from "./styles";
 import Button from "@components/Button";
-import Image from "next/image";
 import { kilobytesToMegaBytes } from "@utils/methods";
 import { useAppContext } from "context/app.context";
 
@@ -26,12 +26,12 @@ function FeaturedProduct() {
           {product.image && (
             <Image
               className="image"
-              src="/images/blur.jpg"
-              width={1500}
-              height={770}
-              layout="responsive"
-              // objectFit="cover"
-              // objectPosition="top center"
+              src={product.image.src}
+              // width={1500}
+              // height={770}
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center left"
               alt={product.image.alt}
               placeholder="blur"
               blurDataURL="/images/blur.jpg"

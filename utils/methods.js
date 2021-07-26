@@ -79,8 +79,8 @@ export function priceRageGenerator(array) {
     max = value > max ? value : max;
   }
 
-  const range1 = Math.floor(min + 10);
-  const range2 = Math.floor((min + max) / 2);
+  const range1 = Math.floor(min + 20);
+  const range2 = Math.floor((min + max) / 2 - 200);
   const range3 = Math.floor(max - range2);
 
   return [
@@ -105,7 +105,7 @@ export function priceRageGenerator(array) {
     {
       id: 4,
       captionText: "More than $" + range3,
-      price: "1000000,"+range3,
+      price: "1000000," + range3,
       isChecked: false,
     },
   ];
@@ -126,18 +126,18 @@ export function handleFilteringSorting(
     );
   }
 
-  if(!isEmpty(priceParam)){
-      const newPriceParam = priceParam.split(',')
-      const max = parseInt(newPriceParam[0])
-      const min = parseInt(newPriceParam[1])
-      newArray = newArray.filter(function(o) {
-        return o.price <= max && o.price >= min;
-      });
+  if (!isEmpty(priceParam)) {
+    const newPriceParam = priceParam.split(",");
+    const max = parseInt(newPriceParam[0]);
+    const min = parseInt(newPriceParam[1]);
+    newArray = newArray.filter(function (o) {
+      return o.price <= max && o.price >= min;
+    });
   }
 
   if (!isEmpty(sortKey) && !isEmpty(sortOrder)) {
-      let someArr = sortArrayBy(newArray, sortKey, sortOrder)
-      newArray = someArr
+    let someArr = sortArrayBy(newArray, sortKey, sortOrder);
+    newArray = someArr;
   }
 
   return newArray;

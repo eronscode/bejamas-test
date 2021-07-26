@@ -1,6 +1,17 @@
 import React from "react";
 import { StyledButton } from "./styles";
 
+
+const defaultProps = {
+  className: undefined,
+  children: undefined,
+  variant: "primary",
+  disabled: false,
+  isLoading: false,
+  round: true,
+  onClick: () => {},
+};
+
 const ButtonLoader = () => (
   <>
     <div>Loading...</div>
@@ -30,14 +41,6 @@ const Button = React.forwardRef(function ButtonWrapper(
   );
 });
 
-Button.defaultProps = {
-  className: undefined,
-  children: undefined,
-  variant: "primary",
-  disabled: false,
-  isLoading: false,
-  round: true,
-  onClick: () => {},
-};
+Button.defaultProps = defaultProps;
 
 export default Button;
