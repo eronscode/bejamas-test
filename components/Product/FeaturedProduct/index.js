@@ -33,6 +33,8 @@ function FeaturedProduct() {
               // objectFit="cover"
               // objectPosition="top center"
               alt={product.image.alt}
+              placeholder="blur"
+              blurDataURL="/images/blur.jpg"
               priority
             />
           )}
