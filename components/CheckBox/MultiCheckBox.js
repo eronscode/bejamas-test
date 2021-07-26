@@ -50,11 +50,10 @@ function MultiCheckBox({ values, checkedItems, onChange }) {
       onChange(newCategory);
     }
   }
-  console.log("i nurdey",{items})
+  
   return (
     <CheckBoxWrapper>
       {items?.map((item, i) => {
-        console.log("is", item.isChecked)
         return(
         <label className="checkbox-wrapper" key={item.id}>
           <Checkbox

@@ -5,7 +5,6 @@ async function fetchProducts(setLoading, setError, setData) {
   try {
     const response = await api.get("/api/products");
     setData(response);
-    console.log(response);
   } catch (error) {
     console.log(error);
     setError(true);
