@@ -11,7 +11,7 @@ const defaultProps = {};
 
 function Header() {
   const { cart, isCartOpen, toggleCart, resetCart } = useAppContext();
-  console.log({ cart });
+  
   return (
     <HeaderWrapper>
       <Image src="/images/logo.jpg" alt="logo" width={156} height={26} />

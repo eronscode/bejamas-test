@@ -1,6 +1,6 @@
 import db from "../../../utils/db";
 
-export default async (req, res) => {
+export default handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       const entries = await db.collection("products").get();
