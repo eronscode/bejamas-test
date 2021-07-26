@@ -4,7 +4,7 @@ import { ArrowDownIcon, ArrowUpIcon, FilterToggleIcon } from "@utils/icons";
 import { useState } from "react";
 import { useAppContext } from "context/app.context";
 
-function FilterHeader() {
+function FilterHeader({openModal}) {
   const [value, setValue] = useState("name");
   const [currentSort, setCurrentSort] = useState(null);
   const { sortProducts } = useAppContext()
@@ -33,7 +33,7 @@ function FilterHeader() {
         <h4>Premium Photos</h4>
       </div>
       <div className="sort-wrapper ">
-        <span className="hidden-lg">
+        <span onClick={openModal} className="hidden-lg">
           <FilterToggleIcon />
         </span>
         <div className="arrow-sort hidden-sm">

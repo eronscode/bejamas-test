@@ -11,18 +11,13 @@ import {
   priceRageGenerator,
 } from "@utils/methods";
 
-function FilterSideBar() {
-  const [checkedCategory, setCheckedCategory] = useState([]);
-  const { products, filterProductsByCategory, filterProductsByPrice} = useAppContext();
-
-  function handleCategoryFilter(values) {
-    setCheckedCategory(values);
-    filterProductsByCategory(values);
-  }
-
-  function handlePriceFilter(values) {
-    filterProductsByPrice(values)
-  }
+function FilterSideBar({
+  checkedPrice,
+  checkedCategory,
+  handleCategoryFilter,
+  handlePriceFilter,
+}) {
+  const { products } = useAppContext();
 
   const mainProducts = products.filter((item) => !item.featured);
 
@@ -43,7 +38,11 @@ function FilterSideBar() {
       <div className="divider"></div>
       <div className="item">
         <h4 className="title">Price Range</h4>
-        <SingleCheckBox values={prices} onChange={handlePriceFilter} />
+        <SingleCheckBox
+          values={prices}
+          checkedItems={checkedPrice}
+          onChange={handlePriceFilter}
+        />
       </div>
     </Wrapper>
   );

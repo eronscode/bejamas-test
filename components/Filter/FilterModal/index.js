@@ -1,27 +1,78 @@
+import { useState } from "react";
 import Button from "@components/Button";
 import Modal from "@components/Modal";
 import { color, mixins } from "@styles/styleUtils";
 import styled, { css } from "styled-components";
 import FilterSideBar from "../FilterSideBar";
+import { useAppContext } from "context/app.context";
+import { isEmpty } from "lodash";
 
 function FilterModal({ isOpen, toggleModal = () => {} }) {
+  const [checkedCategory, setCheckedCategory] = useState([]);
+  const [checkedPrice, setCheckedPrice] = useState(null);
+
+  const { filterProductsByCategory, filterProductsByPrice } = useAppContext();
+
+  function handleCategoryFilter(values) {
+    setCheckedCategory(values);
+  }
+
+  function handlePriceFilter(values) {
+    setCheckedPrice(values);
+  }
+
+  function closeModal() {
+    toggleModal();
+  }
+  function clearModal() {
+    setCheckedCategory([]);
+    setCheckedPrice(null);
+    filterProductsByCategory([]);
+    filterProductsByPrice(null);
+    toggleModal();
+  }
+
+  function saveFilters() {
+    filterProductsByCategory(checkedCategory);
+    filterProductsByPrice(checkedPrice);
+    toggleModal();
+  }
+
+  const isDisabled = isEmpty(checkedCategory) && isEmpty(checkedPrice);
+
   return (
     <ModalWrapper>
-      <Modal className="hidden-lg" isOpen={false}>
-        <div style={{ height: "100vh" }}>
-          <ModalContent>
-            <FilterSideBar />
-          </ModalContent>
-        </div>
-        <ModalFooter>
-          <div className="item">
-            <Button variant="secondary">Clear</Button>
+      {isOpen && (
+        <Modal
+          ModalTitle="Filter"
+          className="hidden-lg"
+          toggleModal={closeModal}
+          isOpen={isOpen}
+        >
+          <div style={{ height: "100vh" }}>
+            <ModalContent>
+              <FilterSideBar
+                handleCategoryFilter={handleCategoryFilter}
+                handlePriceFilter={handlePriceFilter}
+                checkedCategory={checkedCategory}
+                checkedPrice={checkedPrice}
+              />
+            </ModalContent>
           </div>
-          <div className="item">
-            <Button>Save</Button>
-          </div>
-        </ModalFooter>
-      </Modal>
+          <ModalFooter>
+            <div className="item">
+              <Button variant="secondary" onClick={clearModal}>
+                Clear
+              </Button>
+            </div>
+            <div className="item">
+              <Button disabled={isDisabled} onClick={saveFilters}>
+                Save
+              </Button>
+            </div>
+          </ModalFooter>
+        </Modal>
+      )}
     </ModalWrapper>
   );
 }

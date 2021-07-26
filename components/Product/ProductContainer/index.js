@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import FilterHeader from "@components/Filter/FilterHeader";
 import FilterModal from "@components/Filter/FilterModal";
 import FilterSideBar from "@components/Filter/FilterSideBar";
@@ -8,6 +8,7 @@ import { useAppContext } from "context/app.context";
 import ProductCard from "../ProductCard";
 import { PContainter } from "./styles";
 import { ITEMS_PER_PAGE } from "@utils/constants";
+import { NoData } from "@utils/placeholders";
 
 function ProductContainer() {
   const {
@@ -16,25 +17,15 @@ function ProductContainer() {
     sortOptions,
     priceFilterOptions,
     categoryFilterOptions,
+    filterProductsByCategory,
+    filterProductsByPrice,
   } = useAppContext();
   const [page, setPage] = useState(1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [checkedCategory, setCheckedCategory] = useState([]);
+  const [checkedPrice, setCheckedPrice] = useState([]);
   const containerRef = useRef();
 
-  function paginateData(page, data) {
-    const paginate = paginator(data, ITEMS_PER_PAGE);
-    return paginate(page);
-  }
-
-  function paginateOtherData(data) {
-    setPage(data);
-    containerRef.current.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-      inline: "nearest",
-    });
-  }
-
-  if (!products) return null;
   const mainProducts = products.filter((item) => !item.featured);
 
   const filteredProducts = handleFilteringSorting(
@@ -50,20 +41,58 @@ function ProductContainer() {
   let pre_page = page - 1 ? page - 1 : null;
   let next_page = pageLength > page ? page + 1 : null;
 
-  // console.log({neeww})
-  console.log({priceFilterOptions})
+  useEffect(() => {
+    setPage(1);
+  }, [categoryFilterOptions, priceFilterOptions, sortOptions]);
+
+  function handleCategoryFilter(values) {
+    setCheckedCategory(values);
+    filterProductsByCategory(values);
+  }
+
+  function handlePriceFilter(values) {
+    setCheckedPrice(values);
+    filterProductsByPrice(values);
+  }
+
+  function paginateData(page, data) {
+    const paginate = paginator(data, ITEMS_PER_PAGE);
+    return paginate(page);
+  }
+
+  function paginateOtherData(data) {
+    setPage(data);
+    containerRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
+  }
+
+  function toggleModal() {
+    setIsModalOpen((prev) => !prev);
+  }
+
+  if (!products) return null;
 
   return (
     <PContainter ref={containerRef}>
       <div className="header">
-        <FilterHeader />
+        <FilterHeader openModal={toggleModal} />
       </div>
       <div className="body">
         <div className="aside">
-          <FilterSideBar />
-          <FilterModal />
+          <FilterSideBar
+            handleCategoryFilter={handleCategoryFilter}
+            handlePriceFilter={handlePriceFilter}
+            checkedCategory={checkedCategory}
+            checkedPrice={checkedPrice}
+          />
+
+          <FilterModal isOpen={isModalOpen} toggleModal={toggleModal} />
         </div>
         <div className="content">
+          {newData.length === 0 && <NoData text="Sorry! No result found for the selected filter query!" />}
           <div className="product-wrapper">
             {newData.map((item) => (
               <div key={item.id} className="product-item">

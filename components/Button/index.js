@@ -7,27 +7,28 @@ const ButtonLoader = () => (
   </>
 );
 
-const Button = React.forwardRef(
-  ({ children, variant, disabled, onClick, isLoading, ...restProps }, ref) => {
-    const handleClick = () => {
-      if (!disabled && !isLoading) {
-        onClick();
-      }
-    };
+const Button = React.forwardRef(function ButtonWrapper(
+  { children, variant, disabled, onClick, isLoading, ...restProps },
+  ref
+) {
+  const handleClick = () => {
+    if (!disabled && !isLoading) {
+      onClick();
+    }
+  };
 
-    return (
-      <StyledButton
-        {...restProps}
-        variant={variant}
-        disabled={disabled}
-        onClick={handleClick}
-        ref={ref}
-      >
-        {isLoading ? <ButtonLoader /> : children}
-      </StyledButton>
-    );
-  }
-);
+  return (
+    <StyledButton
+      {...restProps}
+      variant={variant}
+      disabled={disabled}
+      onClick={handleClick}
+      ref={ref}
+    >
+      {isLoading ? <ButtonLoader /> : children}
+    </StyledButton>
+  );
+});
 
 Button.defaultProps = {
   className: undefined,

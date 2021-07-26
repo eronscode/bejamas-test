@@ -39,6 +39,7 @@ const defaults = {
       );
     });
 
+
 export default {
     get: (...args) => api('get', ...args),
     post: (...args) => api('post', ...args),

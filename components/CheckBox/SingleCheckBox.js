@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { CheckBoxWrapper } from "./styles";
+import { isEmpty } from "lodash";
 
 const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
   <input
@@ -11,10 +12,23 @@ const Checkbox = ({ type = "checkbox", name, checked, value, onChange }) => (
   />
 );
 
-function SingleCheckBox({ values, checkedItems, onChange = () => null }) {
+function SingleCheckBox({ values, checkedItems,  onChange = () => null }) {
   const [items, setItems] = useState([]);
   
-  useEffect(() => setItems(values), []);
+  
+  useEffect(() => {
+    if (!isEmpty(checkedItems)) {
+      const newItems = values.map((product) => {
+        return product.price === checkedItems
+          ? { ...product, isChecked: true }
+          : product;
+      });
+      
+      setItems(newItems);
+    }else{
+      setItems(values);
+    }
+  }, [checkedItems]);
 
   function handleChange(e) {
     const isChecked = e.target.checked;
