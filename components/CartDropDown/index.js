@@ -18,7 +18,7 @@ function CartDropDown({ close, resetCart, cart }) {
         <>
           <CartContent>
             {cart.length !== 0 &&
-              cart.map((item) => <CartItem key={item.id} {...item} />)}
+              cart.map((item, index) => <CartItem key={index} {...item} />)}
           </CartContent>
           <div className="footer">
             <Button onClick={resetCart}>Clear Items</Button>

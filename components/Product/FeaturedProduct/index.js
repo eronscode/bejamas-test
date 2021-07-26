@@ -8,9 +8,9 @@ function FeaturedProduct() {
   const { products, addToCart } = useAppContext();
   const filtered = products.filter((item) => item.featured);
   const product = filtered[0];
-  
+
   if (!product) return null;
-  
+
   return (
     <FeaturedWrapper>
       <div className="header">
@@ -35,6 +35,7 @@ function FeaturedProduct() {
               alt={product.image.alt}
               placeholder="blur"
               blurDataURL="/images/blur.jpg"
+              quality={25}
               priority
             />
           )}
@@ -62,10 +63,12 @@ function FeaturedProduct() {
                     <Image
                       className="image"
                       src={image.src}
+                      alt={image.alt}
                       layout="fill"
                       objectFit="cover"
                       objectPosition="top center"
-                      alt={image.alt}
+                      placeholder="blur"
+                      blurDataURL="/images/blur.jpg"
                     />
                   </div>
                 ))}

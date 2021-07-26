@@ -21,9 +21,10 @@ export default function Home() {
 
   if (error) {
     return (
+      // Mini implmenteation. Further implementation would be to display API specific error from response.
       <NoData
         text="Error Occured while fetching Data"
-        subText="Try checking internet or database connection "
+        subText="This is unlikely to happen. Try checking internet or database connection"
       />
     );
   }
