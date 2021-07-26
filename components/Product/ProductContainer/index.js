@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 import FilterHeader from "@components/Filter/FilterHeader";
 import FilterSideBar from "@components/Filter/FilterSideBar";
 import Pagination from "@components/Pagination";
@@ -9,8 +9,9 @@ import ProductCard from "../ProductCard";
 import { PContainter } from "./styles";
 import { ITEMS_PER_PAGE } from "@utils/constants";
 import { NoData } from "@utils/placeholders";
+import { isEmpty } from "lodash";
 
-const FilterModal = dynamic(() => import('@components/Filter/FilterModal'))
+const FilterModal = dynamic(() => import("@components/Filter/FilterModal"));
 
 function ProductContainer() {
   const {
@@ -94,7 +95,12 @@ function ProductContainer() {
           <FilterModal isOpen={isModalOpen} toggleModal={toggleModal} />
         </div>
         <div className="content">
-          {newData.length === 0 && <NoData text="Sorry! No result found for the selected filter query!" />}
+          {newData.length === 0 &&
+          (!isEmpty(categoryFilterOptions) ||
+            !isEmpty(priceFilterOptions) ||
+            !isEmpty(sortOptions)) ? (
+            <NoData text="Sorry! No result found for the selected filter query!" />
+          ) : null}
           <div className="product-wrapper">
             {newData.map((item) => (
               <div key={item.id} className="product-item">
