@@ -4,8 +4,8 @@ import productService from "@utils/hooks/useProductService";
 import { useAppContext } from "context/app.context";
 import { ContentPlaceholder, NoData } from "@utils/placeholders";
 
-const FeaturedProduct = dynamic(() => import('@components/Product/FeaturedProduct'), { ssr: false })
-const ProductContainer = dynamic(() => import('@components/Product/ProductContainer'),{ ssr: false })
+const FeaturedProduct = dynamic(() => import('@components/Product/FeaturedProduct'))
+const ProductContainer = dynamic(() => import('@components/Product/ProductContainer'))
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
@@ -18,7 +18,7 @@ export default function Home() {
   );
 
   if (loading) {
-    return <ContentPlaceholder />;
+    return<p>Loading.....</p>;
   }
 
   if (error) {
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      <FeaturedProduct />
+      {/* <FeaturedProduct /> */}
       <ProductContainer />
     </>
   );
