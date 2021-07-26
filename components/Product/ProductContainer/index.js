@@ -76,7 +76,7 @@ function ProductContainer() {
     setIsModalOpen((prev) => !prev);
   }
 
-  if (!products) return null;
+  if (isEmpty(products)) return null;
 
   return (
     <PContainter ref={containerRef}>

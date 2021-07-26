@@ -26,7 +26,7 @@ function FeaturedProduct() {
           {product.image && (
             <Image
               className="image"
-              src={product.image.src}
+              src="/images/blur.jpg"
               width={1500}
               height={770}
               layout="responsive"
