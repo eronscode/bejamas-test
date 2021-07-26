@@ -89,7 +89,7 @@ export function NoCartItem() {
 
 export function NoData({text=null, subText=null}) {
   return (
-    <NoData>
+    <NoFilterResultWrapper>
       <div>
         <svg
           viewBox="0 0 512.28 512.28"
@@ -115,7 +115,7 @@ export function NoData({text=null, subText=null}) {
         <h4>{text}</h4>
         <p>{subText}</p>
       </div>
-    </NoData>
+    </NoFilterResultWrapper>
   );
 }
 

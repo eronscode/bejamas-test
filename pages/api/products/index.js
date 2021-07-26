@@ -1,6 +1,6 @@
 import db from "../../../utils/db";
 
-export default handler = async (req, res) => {
+const handler = async (req, res) => {
   if (req.method === "GET") {
     try {
       const entries = await db.collection("products").get();
@@ -30,3 +30,5 @@ export default handler = async (req, res) => {
     }
   }
 };
+
+export default handler
