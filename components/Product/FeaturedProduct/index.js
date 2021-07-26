@@ -27,9 +27,11 @@ function FeaturedProduct() {
             <Image
               className="image"
               src={product.image.src}
-              layout="fill"
-              objectFit="cover"
-              objectPosition="top center"
+              width={1500}
+              height={770}
+              layout="responsive"
+              // objectFit="cover"
+              // objectPosition="top center"
               alt={product.image.alt}
               priority
             />

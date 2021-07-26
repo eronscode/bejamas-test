@@ -17,8 +17,8 @@ export const FeaturedWrapper = styled.div`
   .image-wrapper {
     .image-container {
       width: 100%;
-      height: 700px;
-      position: relative;
+      /* height: 700px;
+      position: relative; */
     }
     .tag-label {
       position: absolute;
