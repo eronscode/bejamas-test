@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Bejamas Frontend Test
 
-## Getting Started
+An assignment to create a proof of concept of an ecommerce solution.
 
-First, run the development server:
+## Libraries/Framework
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+- React
+- Next.js
+- firebase-admin
+- styled-components
+- axios
+- react-content-loader
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run this project locally
+
+1. Download and Install Node JS from https://nodejs.org/en/download/
+2. In the root project directory, type `npm install` to install the project's dependencies.
+3. Once installation is complete, type `npm run dev` to start the project in your local browser. This will start up the full react application.
+
+NOTE: Ensure you're connected to the internet so products can load up.
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### TASK FEATURES EXPLANATION
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. API Implementation: I used firebase firestore for this project and created endpoints in `pages/api/products/index.js` to create products and fetch products.
 
-## Learn More
+2. Featured Products: The products list being fetched from the backend had one product with a flag of featured=true. This product was filtered from the array and displayed at the top of the page. Code implementation can be found here: `components/Product/FeaturedProduct/index.js`
 
-To learn more about Next.js, take a look at the following resources:
+3. Product List: The products fetched from the api displays 6 items at first and hovering over the image displays the "add to cart" button. Some products also have the best seller flag.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+4. Add to cart: The add to cart button add elements to the cart and make the cart dropdown visible. A context state was created for the cart items and cart open state. This made cart items avaialble to comsumers of any components, giving components the flexibility to add and remove items from cart or even close the dropdown toggle of the cart.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+5. Pagination: I created a resuable pagination component and also created functions to change pagination display content.
 
-## Deploy on Vercel
+6. Sorting: i implemted dynamic category filter. Categories were dynamically filtered from the list of API data. Also price ranges were also dynamically filtered based the mininum and maximum prices from the API data.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+7. Filtering: I implemented filtering of products based on price and name in ascending and descending order. This was achieved with javascript filter functions. The modal for filtering also works on mobile.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+8. Web performance: In order to achieve great web performance, i utitlized the next js image component to render images specified for every screen thereby reducing Largest Contentful Paint(LCP) core web vital.
+
+## Deployment Link
+
+This project was deployed to heroku : https://poc-ecommerce-test.herokuapp.com/
+
+## Tips and Additions
+
+Althought this is a POC, it would have been nice to display a flash message when an item is added to cart. That way a user knows items are added to cart.
+
+Gracias

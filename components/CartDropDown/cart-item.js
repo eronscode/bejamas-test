@@ -1,6 +1,21 @@
 import Image from "next/image";
+import PropTypes from "prop-types";
 import { currencyTransform } from "@utils/methods";
 import { CartItemWrapper } from "./styles";
+
+const defaultProps = {
+  image: undefined,
+  currency: undefined,
+  price: undefined,
+  name: undefined,
+};
+
+const propTypes = {
+  image: PropTypes.object,
+  currency: PropTypes.string,
+  price: PropTypes.number,
+  name: PropTypes.string,
+};
 
 function CartItem(props) {
   const { image, currency, price, name } = props;
@@ -28,5 +43,8 @@ function CartItem(props) {
     </CartItemWrapper>
   );
 }
+
+CartItem.defaultProps = defaultProps;
+CartItem.propTypes = propTypes;
 
 export default CartItem;

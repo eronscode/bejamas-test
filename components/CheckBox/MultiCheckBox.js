@@ -1,7 +1,23 @@
 import { useEffect, useState } from "react";
 import { CheckBoxWrapper } from "./styles";
 
-const Checkbox = ({ type = "checkbox", name, checked, value, onChange, ...restProps }) => (
+
+const defaultProps = {
+  values: [],
+  checkedItems: [],
+  onChange: () => null,
+};
+
+
+
+const Checkbox = ({
+  type = "checkbox",
+  name,
+  checked,
+  value,
+  onChange,
+  ...restProps
+}) => (
   <input
     type={type}
     name={name}
@@ -22,14 +38,12 @@ function MultiCheckBox({ values, checkedItems, onChange }) {
           ? { ...product, isChecked: true }
           : product;
       });
-      
+
       setItems(newItems);
-    }else{
+    } else {
       setItems(values);
     }
   }, [checkedItems]);
-
-  
 
   function handleChange(e) {
     const isChecked = e.target.checked;
@@ -50,24 +64,27 @@ function MultiCheckBox({ values, checkedItems, onChange }) {
       onChange(newCategory);
     }
   }
-  
+
   return (
     <CheckBoxWrapper>
       {items?.map((item, i) => {
-        return(
-        <label className="checkbox-wrapper" key={item.id}>
-          <Checkbox
-            id={item.id}
-            name={item.category}
-            value={item.category}
-            checked={item.isChecked}
-            onChange={handleChange}
-          />
-          <span className="checkbox-label">{item.category}</span>
-        </label>
-      )})}
+        return (
+          <label className="checkbox-wrapper" key={item.id}>
+            <Checkbox
+              id={item.id}
+              name={item.category}
+              value={item.category}
+              checked={item.isChecked}
+              onChange={handleChange}
+            />
+            <span className="checkbox-label">{item.category}</span>
+          </label>
+        );
+      })}
     </CheckBoxWrapper>
   );
 }
+
+MultiCheckBox.defaultProps = defaultProps
 
 export default MultiCheckBox;

@@ -92,6 +92,7 @@ export const FeaturedDescription = styled.div`
     }
     h4:nth-child(2) {
       color: ${color.primary.inc1};
+      text-transform: capitalize;
     }
 
     p {
@@ -99,6 +100,7 @@ export const FeaturedDescription = styled.div`
       ${font.size(18)}
       line-height: 180%;
       color: ${color.primary.inc1};
+      
     }
   }
 

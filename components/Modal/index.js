@@ -1,24 +1,19 @@
 import React, { useEffect } from "react";
-import {
-  
-  ModalHeader,
-  ScrollOverlay,
-  StyledModal,
-} from "./styles";
+import PropTypes from "prop-types";
+import { ModalHeader, ScrollOverlay, StyledModal } from "./styles";
 import Portal from "@utils/hocs/Portal";
 import { CloseIcon } from "@utils/icons";
 
 const propTypes = {
-  //   className: PropTypes.string,
-  //   styles: PropTypes.object,
-  //   modalContent: PropTypes.string,
-  //   isOpen: PropTypes.bool,
-  //   toggleModal: PropTypes.func,
-  //   ModalTitle: PropTypes.string,
-  //   actionButton: PropTypes.arrayOf(PropTypes.object),
+  className: PropTypes.string,
+  styles: PropTypes.object,
+  isOpen: PropTypes.bool,
+  toggleModal: PropTypes.func,
+  ModalTitle: PropTypes.string,
 };
 
 const defaultProps = {
+  styles: undefined,
   className: undefined,
   children: undefined,
   isOpen: false,
@@ -48,7 +43,7 @@ function Modal({
     <>
       {isOpen && (
         <Portal>
-          <ScrollOverlay  className={className} onClick={toggleModal}>
+          <ScrollOverlay className={className} onClick={toggleModal}>
             <StyledModal
               onClick={(e) => e.stopPropagation()}
               {...styles}
@@ -68,7 +63,6 @@ function Modal({
     </>
   );
 }
-
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;

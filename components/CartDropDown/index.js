@@ -1,8 +1,21 @@
+import PropTypes from "prop-types";
 import Button from "@components/Button";
 import { CloseIcon } from "@utils/icons";
 import { NoCartItem } from "@utils/placeholders";
 import CartItem from "./cart-item";
 import { CartContent, CartDropDownWrapper } from "./styles";
+
+const defaultProps = {
+  close: () => {},
+  resetCart: () => {},
+  cart: [],
+};
+
+const propTypes = {
+  close: PropTypes.func,
+  resetCart: PropTypes.func,
+  cart: PropTypes.arrayOf(PropTypes.object),
+};
 
 function CartDropDown({ close, resetCart, cart }) {
   return (
@@ -28,5 +41,8 @@ function CartDropDown({ close, resetCart, cart }) {
     </CartDropDownWrapper>
   );
 }
+
+CartDropDown.defaultProps = defaultProps;
+CartDropDown.propTypes = propTypes;
 
 export default CartDropDown;

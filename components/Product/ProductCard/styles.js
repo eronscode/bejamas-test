@@ -57,7 +57,7 @@ export const ProductCardContainer = styled.div`
       display: none;
     }
 
-    &:hover .cart-button {
+    .image-container:hover .cart-button {
       display: block;
       transition: all 1s ease-in;
     }

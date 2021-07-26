@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyledButton } from "./styles";
-
 
 const defaultProps = {
   className: undefined,
@@ -10,6 +10,16 @@ const defaultProps = {
   isLoading: false,
   round: true,
   onClick: () => {},
+};
+
+const propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.any,
+  variant: PropTypes.string,
+  disabled: PropTypes.bool,
+  isLoading: PropTypes.bool,
+  round: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 const ButtonLoader = () => (
@@ -42,5 +52,6 @@ const Button = React.forwardRef(function ButtonWrapper(
 });
 
 Button.defaultProps = defaultProps;
+Button.propTypes = propTypes;
 
 export default Button;

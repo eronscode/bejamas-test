@@ -36,7 +36,7 @@ function FeaturedProduct() {
               placeholder="blur"
               blurDataURL="/images/blur.jpg"
               quality={25}
-              priority
+              priority={true}
             />
           )}
         </div>

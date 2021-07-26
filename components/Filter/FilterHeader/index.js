@@ -92,6 +92,7 @@ const Wrapper = styled.div`
     padding: 7px;
     border: none;
     cursor: pointer;
+    background: transparent;
   }
 
   .sort-wrapper {

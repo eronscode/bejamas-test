@@ -57,7 +57,7 @@ export const CartItemWrapper = styled.div`
       /* ${mixins.truncateText} */
       line-height: 27px;
       margin: 0 0 10px 0;
-      word-break: break-word;
+    
     }
     p {
       ${font.size(29)}
