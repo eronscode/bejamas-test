@@ -18,7 +18,7 @@ export default function Home() {
   );
 
   if (loading) {
-    return<p>Loading.....</p>;
+    return <ContentPlaceholder/>;
   }
 
   if (error) {
@@ -32,7 +32,7 @@ export default function Home() {
 
   return (
     <>
-      {/* <FeaturedProduct /> */}
+      <FeaturedProduct />
       <ProductContainer />
     </>
   );
