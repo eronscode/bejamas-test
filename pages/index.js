@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
-import FeaturedProduct from "@components/Product/FeaturedProduct";
-import ProductContainer from "@components/Product/ProductContainer";
+import dynamic from 'next/dynamic'
 import productService from "@utils/hooks/useProductService";
 import { useAppContext } from "context/app.context";
 import { ContentPlaceholder, NoData } from "@utils/placeholders";
+
+const FeaturedProduct = dynamic(() => import('@components/Product/FeaturedProduct'), { ssr: false })
+const ProductContainer = dynamic(() => import('@components/Product/ProductContainer'),{ ssr: false })
 
 export default function Home() {
   const [loading, setLoading] = useState(false);
