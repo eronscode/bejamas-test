@@ -1,6 +1,6 @@
 ## Bejamas Frontend Test
 
-An assignment to create a proof of concept of an ecommerce solution.
+An assignment to create a proof of concept of an ecommerce solution - Task done by Osemudiamen Matthew Elebesunu.
 
 ## Libraries/Framework
 
@@ -46,5 +46,13 @@ This project was deployed to heroku : https://poc-ecommerce-test.herokuapp.com/
 ## Tips and Additions
 
 Althought this is a POC, it would have been nice to display a flash message when an item is added to cart. That way a user knows items are added to cart.
+
+## Contact Info
+
+Feel free to reach me on:
+
+LinkedIn: https://www.linkedin.com/in/ose-matthew/
+
+Email: osemu.matthew@gmail.com
 
 Gracias
